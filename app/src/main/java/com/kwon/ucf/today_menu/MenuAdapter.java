@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MyViewHolder>{
     ArrayList<MenuData> menuData;
-
     public MenuAdapter(ArrayList<MenuData> menuData) {
         this.menuData = menuData;
     }

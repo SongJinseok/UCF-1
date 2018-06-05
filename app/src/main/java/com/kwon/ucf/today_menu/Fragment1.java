@@ -102,10 +102,25 @@ public class Fragment1 extends Fragment {
                     JsonArray arr = response.body();
                     for(int i = 0; i<arr.size(); i++){
                         JsonObject item = arr.get(i).getAsJsonObject();
-                        float total = item.get("totalRating").getAsFloat();
-                        int count = item.get("count").getAsInt();
-                        float res = count / total;
-                        mData.add(new MenuData(item.get("foodname").getAsString(), item.get("price").getAsString(), item.get("corner").getAsString(), res, R.drawable.ic_launcher_foreground));
+
+                        try {
+                            float total = item.get("totalRating").getAsFloat();
+                            int count = item.get("count").getAsInt();
+                            float res = count / total;
+                            mData.add(new MenuData(item.get("foodname").getAsString(), item.get("price").getAsString(), item.get("corner").getAsString(), res, R.drawable.ic_launcher_foreground));
+
+                        }catch (Exception e){
+                            float total = 0;
+                            int count = 0;
+                            float res = 0;
+                            mData.add(new MenuData(item.get("foodname").getAsString(), item.get("price").getAsString(), item.get("corner").getAsString(), res, R.drawable.ic_launcher_foreground));
+
+                        };
+
+
+
+
+
                     }
                 }
             }
@@ -116,5 +131,7 @@ public class Fragment1 extends Fragment {
             }
         });
         //mData.add(new MenuData("돈가스","3000원","3코너", 3, R.drawable.ic_launcher_foreground));
+
+
     }
 }

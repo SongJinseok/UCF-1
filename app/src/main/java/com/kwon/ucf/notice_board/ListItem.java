@@ -11,7 +11,7 @@ import com.kwon.ucf.R;
  * Created by song on 2018-06-05.
  */
 
-class ListItem extends LinearLayout {
+class ListItem extends LinearLayout { //리스트뷰 구성이 comment랑 날짜 이러헤 있는데 제가 구분해놨거더여 근데 뭐가문제임
 
     TextView text_Comment;
     TextView text_Day;
