@@ -12,8 +12,14 @@ import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MyViewHolder>{
     ArrayList<MenuData> menuData;
+    View.OnClickListener mOnClickListener;
 
-    public MenuAdapter(ArrayList<MenuData> menuData) {
+    public MenuAdapter(ArrayList<MenuData> menuData, View.OnClickListener mOnClickListener) {
+        this.menuData = menuData;
+        this.mOnClickListener = mOnClickListener;
+    }
+
+    public void setMenuData(ArrayList<MenuData> menuData) {
         this.menuData = menuData;
     }
 
@@ -25,7 +31,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MyViewHolder>{
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_list_item, parent, false);
-        return new MyViewHolder(itemView);
+        MyViewHolder myViewHolder = new MyViewHolder(itemView);
+        itemView.setOnClickListener(mOnClickListener);
+        return myViewHolder;
     }
 
     @Override

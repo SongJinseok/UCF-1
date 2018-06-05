@@ -1,5 +1,6 @@
 package com.kwon.ucf.today_menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kwon.ucf.R;
 import com.kwon.ucf.application.ApplicationController;
+import com.kwon.ucf.detail.DetailActivity;
 import com.kwon.ucf.network.NetworkService;
 
 import java.util.ArrayList;
@@ -48,10 +50,8 @@ public class Fragment1 extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        menuAdapter = new MenuAdapter(mData);
+        menuAdapter = new MenuAdapter(mData, clickEvent);
         recyclerView.setAdapter(menuAdapter);
-
-
 
         Calendar startDate = Calendar.getInstance();
         startDate.add(Calendar.MONTH, -1);
@@ -107,6 +107,7 @@ public class Fragment1 extends Fragment {
                         float res = count / total;
                         mData.add(new MenuData(item.get("foodname").getAsString(), item.get("price").getAsString(), item.get("corner").getAsString(), res, R.drawable.ic_launcher_foreground));
                     }
+                    menuAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -115,6 +116,16 @@ public class Fragment1 extends Fragment {
 
             }
         });
-        //mData.add(new MenuData("돈가스","3000원","3코너", 3, R.drawable.ic_launcher_foreground));
+
     }
+    public View.OnClickListener clickEvent = new View.OnClickListener() {
+        public void onClick(View v) {
+            int itemPosition = recyclerView.getChildAdapterPosition(v);
+            String str = mData.get(itemPosition).getName();
+//            Toast.makeText(getContext(),str,Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), DetailActivity.class);
+            intent.putExtra("foodname",str);
+            Fragment1.this.startActivity(intent);
+        }
+    };
 }

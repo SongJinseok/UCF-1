@@ -7,6 +7,10 @@ public class MenuData {
     public float score;
     public int hot;
 
+    public String getName() {
+        return name;
+    }
+
     public MenuData(String name, String price, String corner, float score, int hot) {
         this.name = name;
         this.price = price;
