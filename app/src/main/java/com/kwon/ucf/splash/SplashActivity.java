@@ -1,4 +1,4 @@
-package com.kwon.ucf.Splash;
+package com.kwon.ucf.splash;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.kwon.ucf.Fragments;
+package com.kwon.ucf.notice_board;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
