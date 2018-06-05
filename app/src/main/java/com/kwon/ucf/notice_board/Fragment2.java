@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 
 import com.kwon.ucf.R;
 
-public class Fragment1 extends Fragment {
+//게시판
+
+public class Fragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment1, container, false);
+        return inflater.inflate(R.layout.fragment2, container, false);
     }
 }
