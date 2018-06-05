@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public Fragment getItem(int position) {
+            public android.support.v4.app.Fragment getItem(int position) {
                 switch (position){
                     case 0:
                         return fragment1;
